@@ -67,6 +67,7 @@ main > div:hover ~ div:not(:hover) {
     left: 50%;
     transform: translateX(-50%);
     display: none;
-    width: 35%;
+    max-width: 100%;
+    max-height: 100%;
     z-index: -1;
 }
