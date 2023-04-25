@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beige Webpage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+    </header>
+    <main>
+        <div data-gif="penpaper.gif">
+            <b>Resume</b>
+            <img src="penpaper.gif" class="gif-image" alt="Resume">
+        </div>
+        <div data-gif="tools.gif">
+            <b>Projects</b>
+            <img src="tools.gif" class="gif-image" alt="Projects">
+        </div>
+        <div data-gif="mail.gif">
+            <b>Contacts</b>
+            <img src="mail.gif" class="gif-image" alt="Contacts">
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <script>
+        const gifElements = document.querySelectorAll('[data-gif]');
+
+        gifElements.forEach(el => {
+            const gifImage = el.querySelector('.gif-image');
+            gifImage.style.display = 'none';
+            
+            el.addEventListener('mouseover', () => {
+                gifImage.style.display = 'block';
+            });
+
+            el.addEventListener('mouseout', () => {
+                gifImage.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
