@@ -8,13 +8,20 @@
 </head>
 <body>
     <header>
+        <div class="dark-mode-switch">
+            <div class="dark-mode-switch">
+                <label class="switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
     </header>
     <main>
-        <div data-gif="penpaper.gif">
+        <div data-gif="penpaper.gif" onclick="navigateToPage('resume.html')">
             <b>Resume</b>
-            <img src="penpaper.gif" class="gif-image" alt="Resume">
+            <img src="penpaper.gif" class="gif-image" alt="Resume" >
         </div>
-        <div data-gif="tools.gif">
+        <div data-gif="tools.gif" onclick="navigateToPage('projects.html')">
             <b>Projects</b>
             <img src="tools.gif" class="gif-image" alt="Projects">
         </div>
@@ -43,6 +50,35 @@
                 gifImage.style.display = 'none';
             });
         });
+
+        // Check for the saved dark mode preference on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            var isDarkMode = localStorage.getItem("darkMode") === "true";
+            document.getElementById("darkModeToggle").checked = isDarkMode;
+            toggleDarkMode(isDarkMode);
+        });
+
+        document.getElementById("darkModeToggle").addEventListener("change", function() {
+            toggleDarkMode(this.checked);
+        });
+
+        document.getElementById("darkModeToggle").addEventListener("change", function() {
+            toggleDarkMode(this.checked);
+        });
+
+        function toggleDarkMode(isDarkMode) {
+            var elementsToToggle = [document.body, document.querySelector('header')];
+
+            elementsToToggle.forEach(function (element) {
+                if (isDarkMode) {
+                    element.classList.add("dark-mode");
+                } else {
+                    element.classList.remove("dark-mode");
+                }
+            });
+            localStorage.setItem("darkMode", isDarkMode);
+        }
+
     </script>
 </body>
 </html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="stylesheet" href="resume_style.css">
+</head>
+<body>
+    <header>
+        <div class="dark-mode-switch">
+            <label class="switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div>
+            <a href="index.html">
+                <b>
+                    Home
+                </b>
+            </a>
+        </div>
+        <div>
+            <a href="projects.html">
+                <b>
+                    Projects
+                </b>
+            </a>
+        </div>
+        <div>
+            <a href="contacts.html">
+                <b>
+                    Contacts
+                </b>
+            </a>
+        </div>
+    </header>
+    <main>
+        <div id="resumeDiv"> 
+            <iframe title="My Resume" id="resumeIframe" src="PageResume.html" width="100%" height="100%" frameborder = "0"></iframe>
+            <div id="iframeOverlay" style="position: absolute; top: 20px; left: 0; width: 100%; height: 100%;"></div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+
+    <a id="downloadLink" href="Resume.pdf" download style="display: contents;"></a>
+
+    <!-- Download prompt modal -->
+    <div id="downloadPrompt" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000;">
+        <div style="width: 300px; color: #5f5f5f; background-color: #eeeeee; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; text-align: center;">
+            <p>Do you want to vist the downloadable version of this resume?</p>
+            <button id="downloadYes">Yes</button>
+            <button id="downloadNo">No</button>
+        </div>
+    </div>
+</body>
+
+<script>
+    document.getElementById("iframeOverlay").addEventListener("click", function() {
+        document.getElementById("downloadPrompt").style.display = "block";
+    });
+
+    document.getElementById("downloadYes").addEventListener("click", function() {
+        var downloadLink = document.getElementById("downloadLink");
+        downloadLink.click();
+        document.getElementById("downloadPrompt").style.display = "none";
+    });
+
+    document.getElementById("downloadNo").addEventListener("click", function() {
+        document.getElementById("downloadPrompt").style.display = "none";
+    });
+
+    // Check for the saved dark mode preference on page load
+    document.addEventListener("DOMContentLoaded", function() {
+        var isDarkMode = localStorage.getItem("darkMode") === "true";
+        document.getElementById("darkModeToggle").checked = isDarkMode;
+        toggleDarkMode(isDarkMode);
+    });
+
+    document.getElementById("darkModeToggle").addEventListener("change", function() {
+        toggleDarkMode(this.checked);
+    });
+
+    function toggleDarkMode(isDarkMode) {
+        var elementsToToggle = [document.body, document.querySelector('header'), document.querySelector('.dark-mode-switch')];
+
+        elementsToToggle.forEach(function (element) {
+            if (isDarkMode) {
+                element.classList.add("dark-mode");
+            } else {
+                element.classList.remove("dark-mode");
+            }
+        });
+
+        // Save the dark mode preference in local storage
+        localStorage.setItem("darkMode", isDarkMode);
+    }
+</script>
+
+</html>

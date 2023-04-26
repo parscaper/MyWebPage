@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #FAFAFA; /* Beige background color */
@@ -11,47 +11,165 @@ body {
     overflow: hidden;
 }
 
+/* Header styles */
+header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+  background-color: #ECECEC;
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header div {
+  padding-right: 10px;
+  margin-right: 10px;
+  background-color: #ECECEC;
+  transition: color .1s;
+}
+
+header div:hover {
+  transform: scale(1.1);
+  color: #0000009f;
+}
+
+header div:last-child {
+  margin-right: 0;
+}
+
+
+
 main {
-    flex: 1;
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:flex-start;
+  gap: 20px;
+  padding-top: 80px;
+  min-height: 100vh;
 }
 
-main > div {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
+main div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  color: #0000003b;
+  transition:filter .2s ease, transform .08s ease, background-color 0.3s ease, color .2s;
 }
 
-.fade-in-image {
-    animation: fadeIn 20s;
-    -webkit-animation: fadeIn 20s;
-    -moz-animation: fadeIn 20s;
-    -o-animation: fadeIn 20s;
-    -ms-animation: fadeIn 20s;
-  }
+main div:hover {
+  transform: scale(1.05);
+  background-color: #f5f5f5;
+  color: #0000009f;
+}
 
-  @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  @-moz-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  @-webkit-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  @-o-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  @-ms-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+.box {
+  font-size: x-large;
+  width: 80%;
+  max-width: 1000px;
+  height: 100px;
+  background-color: #ECECEC;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #222;
+  color: #f5f5f5;
+}
+
+.dark-mode main div{
+  background-color: #111;
+  color: #3a3a3a;
+}
+
+.dark-mode main div:hover {
+  background-color: #1f1f1f;
+  color: white;
+}
+
+
+.dark-mode header {
+  background-color: #111;
+  color: #ffffff;
+}
+
+.dark-mode header div {
+  background-color: #111;
+  color: #999;
+}
+
+.dark-mode header div:hover {
+  color: #ffffff;
+}
+
+/* Dark Mode Slider */
+.dark-mode-switch {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: transparent;
+  z-index: 1000;
+}
+
+.dark-mode .dark-mode-switch {
+  background-color: transparent;
+  color: #FAFAFA;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

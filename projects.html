@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacts</title>
-    <link rel="stylesheet" href="contacts_style.css">
+    <title>Projects</title>
+    <link rel="stylesheet" href="projects_style.css">
 </head>
+
 <body>
+
     <header>
         <div class="dark-mode-switch">
             <label class="switch">
@@ -29,22 +31,35 @@
             </a>
         </div>
         <div>
-            <a href="projects.html">
+            <a href="contacts.html">
                 <b>
-                    Projects
+                    Contacts
                 </b>
             </a>
         </div>
     </header>
     <main>
-        <div class="box" onclick="location.href='https://www.linkedin.com/in/paru-basnet-45aa15129/'">
-            <img src="LI-In-Bug.png" width="3%" height="auto">
-            <b>LinkedIn</b>
+        <div class="box" onclick="window.location.href='530 Final Report (3).pdf' ">
+                <b>Research into NIST Random Number Generation Through Gameplay</b>
+        </div>
+        <div class="box" onclick="window.location.href='571 Final Research Paper.pdf' ">
+            <b>Research and Application of Machine Learning to Predict User's Political Orientation</b>
+        </div>
+        <div class="box" onclick="location.href='https://github.com/judgyknowitall/cpsc481_teamproject'">
+            <b>UX/UI Project to Develop a Robust Application Prototype Through HCI Methodologies</b>
+        </div>
+        <div class="box" onclick="location.href='https://github.com/jthnl/CPSC471Project'">
+            <b>Web Application Game Based on Two Known Popular Games: Mafia and Among Us</b>
+        </div>
+        <div>
+
         </div>
     </main>
-    <footer>
-    </footer>
     <script>
+        function navigateToPage(url){
+            window.location.href = url;
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             var isDarkMode = localStorage.getItem("darkMode") === "true";
             document.getElementById("darkModeToggle").checked = isDarkMode;
@@ -69,6 +84,8 @@
             // Save the dark mode preference in local storage
             localStorage.setItem("darkMode", isDarkMode);
         }
+
     </script>
+
 </body>
 </html>
